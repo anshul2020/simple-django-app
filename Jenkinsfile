@@ -11,7 +11,7 @@ node{
 
   stage ('Deploying the Docker image') {
     sh "echo Deploying the container..."
-    sh "docker run -d -p 8000:8000 --name django_app django-app:latest"
+    sh "docker run -d -p 8000:8000 --name django_app django_app:latest"
     sh "echo Container successfully deployed."
 
   }
