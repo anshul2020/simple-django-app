@@ -2,14 +2,16 @@ from django.shortcuts import render, get_object_or_404
 from .models import Counter
 
 def index(request):
+    data = request.POST.get('username')
+
     if len(Counter.objects.filter(key='counter')) == 0:
         counter = Counter(key='counter', value=0)
         counter.save()
     else:
         counter = get_object_or_404(Counter, key='counter')
-    
+
     counter.value+=1
     counter.save()
-    context = {'value': counter.value}
+    context = {'value': counter.value, 'data': data}
     return render(request, 'counter/index.html', context)
 

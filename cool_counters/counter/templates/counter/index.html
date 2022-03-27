@@ -1,2 +1,9 @@
+<h1>Home</h1>
 <h3>Hello, this is a simple Django webpage.</h3>
+<form method="post">
+    {% csrf_token %}
+    Username : <input type="text" name="username">
+    <button type="submit">Submit</button>
+</form>
+<h3>You have entered name as {{ data }}</h3>
 <p>There have been {{ value }} views.</p>
