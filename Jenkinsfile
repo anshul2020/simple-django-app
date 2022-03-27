@@ -4,7 +4,7 @@ node{
 
   stage ('Building the Docker image') {
     sh "echo building the image..."
-    docker.build("django-app:${env.BUILD_ID}")
+    sh "docker build --tag django_app:latest ."
     sh "echo building image complete."
 
   }
