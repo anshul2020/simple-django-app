@@ -4,14 +4,14 @@ node{
 
   stage ('Build image') {
     sh "echo building the image..."
-    sh "docker build --tag django_app:latest . --no-cache"
+    sh "docker build --tag django_app:${env.BUILD_ID} . --no-cache"
     sh "echo building image complete."
 
   }
 
   stage ('Deploy image') {
     sh "echo Deploying the container..."
-    sh "docker run -d -p 8000:8000 --name django_app django_app:latest"
+    sh "docker run -d -p 8000:8000 --name django_app django_app:${env.BUILD_ID}"
     sh "echo Container successfully deployed."
 
   }
